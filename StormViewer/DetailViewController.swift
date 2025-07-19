@@ -11,12 +11,23 @@ class DetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!    
     var selectedImage: String?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnTap = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.largeTitleDisplayMode = .never
+        title = selectedImage
         if let selectedImageValue = selectedImage{
             imageView.image = UIImage(named: selectedImageValue)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnTap = false
     }
     
 
