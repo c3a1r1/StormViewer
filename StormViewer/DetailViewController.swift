@@ -10,6 +10,7 @@ import UIKit
 class DetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!    
     var selectedImage: String?
+    var titleString: String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -19,7 +20,11 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
-        title = selectedImage
+        if let ts = titleString{
+            title = ts
+        }else{
+            title = selectedImage
+        }
         if let selectedImageValue = selectedImage{
             imageView.image = UIImage(named: selectedImageValue)
         }
